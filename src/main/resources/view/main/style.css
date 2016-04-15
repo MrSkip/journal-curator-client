@@ -1,0 +1,19 @@
+#main-border-pane{
+    -fx-background-color: #909090;
+}
+
+#top-border-pane{
+    -fx-background-color: #383838;
+}
+
+#top-hBox{
+    -fx-background-color: #383838;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, #555555, 0, 1.0, 1.6, 2);
+}
+
+#top-button{
+    -fx-background-color: #686868;
+    -fx-text-fill: #c4ccd3;
+    -fx-effect: dropshadow(gaussian, #555555, 0, 1.0, 1.6, 2);
+}
