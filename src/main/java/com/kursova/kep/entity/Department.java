@@ -1,12 +1,5 @@
 package com.kursova.kep.entity;
 
-import javafx.beans.property.LongProperty;
-import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
-import java.sql.Date;
-
 /**
  * by Mr Skip on 10.03.2016.
  */
@@ -14,7 +7,7 @@ import java.sql.Date;
 public class Department extends BaseEntity{
 
     private Long id;
-    private Date name;
+    private String name;
     private String pibOfHead;
 
     public Department() {
@@ -22,10 +15,9 @@ public class Department extends BaseEntity{
 
     public Department(
             Long id,
-            Date name,
+            String name,
             String pibOfHead
     ) {
-//        this.id = new SimpleLongProperty(id);
         this.id = id;
         this.name = name;
         this.pibOfHead = pibOfHead;
@@ -40,11 +32,11 @@ public class Department extends BaseEntity{
         this.id = id;
     }
 
-    public Date getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Date name) {
+    public void setName(String name) {
         this.name = name;
     }
 

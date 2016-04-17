@@ -60,7 +60,7 @@ public class Client {
         }
     }
 
-    private static class Post{
+    public static class Post{
         private HashMap<String, String> variable = new HashMap<>();
         private Object request;
         private Class c;

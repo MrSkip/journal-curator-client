@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane id="main-border-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="477.0" prefWidth="715.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kursova.kep.control.main.MainController">
+<BorderPane id="main-border-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="821.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kursova.kep.control.main.MainController">
    <top>
       <BorderPane prefHeight="67.0" prefWidth="633.0" BorderPane.alignment="CENTER">
          <left>
@@ -21,24 +22,43 @@
             <Pane prefHeight="15.0" prefWidth="633.0" BorderPane.alignment="CENTER" />
          </top>
          <center>
-            <HBox id="top-hBox" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox id="top-hBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button id="top-button" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Department">
+                  <Button id="top-button" fx:id="butDepartment" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Department">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                      <HBox.margin>
-                        <Insets left="10.0" />
+                        <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button id="top-button" mnemonicParsing="false" prefHeight="25.0" prefWidth="112.0" text="Button" />
+                  <Button id="top-button" fx:id="butGroup" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Group">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></Button>
+                  <Button id="top-button" fx:id="butStudent" mnemonicParsing="false" prefWidth="120.0" text="Student">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></Button>
+                  <Button id="top-button" fx:id="butSudject" mnemonicParsing="false" prefWidth="120.0" text="Subject">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></Button>
+                  <Button id="top-button" fx:id="butVisiting" mnemonicParsing="false" prefWidth="120.0" text="Visiting">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></Button>
+                  <Button id="top-button" fx:id="butProgress" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Progress">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></Button>
                </children>
             </HBox>
          </center>
       </BorderPane>
    </top>
    <left>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="445.0" prefWidth="258.0" BorderPane.alignment="CENTER">
          <left>
             <Pane prefHeight="410.0" prefWidth="15.0" BorderPane.alignment="CENTER" />
          </left>
@@ -49,7 +69,37 @@
             <Pane prefHeight="398.0" prefWidth="31.0" BorderPane.alignment="CENTER" />
          </right>
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox id="vBox-left" alignment="TOP_CENTER">
+                     <children>
+                        <Label id="while-text" prefHeight="15.0" prefWidth="197.0" text="Current table">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Serif Regular" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label id="label-header" fx:id="labCurrentTable" alignment="CENTER" minHeight="35.0" minWidth="152.0" prefHeight="35.0" prefWidth="152.0" text="Department">
+                           <font>
+                              <Font name="Droid Serif" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <TitledPane animated="false" text="Tasks">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </TitledPane>
+               </children></VBox>
          </center>
       </BorderPane>
    </left>
@@ -62,12 +112,7 @@
             <Pane prefHeight="392.0" prefWidth="15.0" BorderPane.alignment="CENTER" />
          </right>
          <center>
-            <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-              <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
-              </columns>
-            </TableView>
+            <TableView fx:id="table" prefHeight="430.0" prefWidth="512.0" BorderPane.alignment="CENTER"/>
          </center>
       </BorderPane>
    </center>

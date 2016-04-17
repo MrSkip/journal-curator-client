@@ -97,11 +97,11 @@ public class Student extends BaseEntity{
         this.benefit = benefit;
     }
 
-    public int getCountOfReprimand() {
+    public Integer getCountOfReprimand() {
         return countOfReprimand;
     }
 
-    public void setCountOfReprimand(int countOfReprimand) {
+    public void setCountOfReprimand(Integer countOfReprimand) {
         this.countOfReprimand = countOfReprimand;
     }
 

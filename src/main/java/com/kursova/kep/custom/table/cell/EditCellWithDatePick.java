@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Locale;
 
+import com.kursova.kep.entity.BaseEntity;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.ContentDisplay;
@@ -19,7 +20,7 @@ import javafx.util.StringConverter;
  * Created by Mr. Skip.
  */
 
-public class DatePickerCell<S, T> extends TableCell<S, T> {
+public class EditCellWithDatePick<S extends BaseEntity, T> extends TableCell<S, T> {
 
     private DatePicker datePicker;
 
@@ -56,8 +57,10 @@ public class DatePickerCell<S, T> extends TableCell<S, T> {
         } else {
 
             if (isEditing()) {
+
                 setDatePikerDate(smp.format(item));
                 setText(smp.format(item));
+
                 setGraphic(datePicker);
                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
             } else {
@@ -118,6 +121,7 @@ public class DatePickerCell<S, T> extends TableCell<S, T> {
             Calendar cal = getCalendar();
             commitEdit(cal == null ? null : (T) new Date(cal.getTime().getTime()));
         });
+
         datePicker.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue){
                 Calendar cal = getCalendar();

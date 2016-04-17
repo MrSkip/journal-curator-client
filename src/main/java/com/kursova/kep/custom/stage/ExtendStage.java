@@ -13,10 +13,10 @@ import java.nio.charset.Charset;
  * Created by Mr. Skip.
  */
 
-public class MyStage extends Stage{
+public class ExtendStage extends Stage{
     private FXMLLoader fxmlLoader = null;
 
-    public MyStage(URL path){
+    public ExtendStage(URL path){
         createScene(path);
     }
 

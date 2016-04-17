@@ -1,6 +1,6 @@
 package com.kursova.kep;
 
-import com.kursova.kep.custom.stage.MyStage;
+import com.kursova.kep.custom.stage.ExtendStage;
 import javafx.stage.Stage;
 import javafx.application.Application;
 
@@ -15,10 +15,10 @@ public class Main extends Application {
     }
 
     public void start(Stage primaryStage) throws Exception {
-//        new MyStage(Main.class.getClassLoader().getResource("view/start/start.fxml"))
+//        new ExtendStage(Main.class.getClassLoader().getResource("view/start/start.fxml"))
 //                .showAndWait();
 
-        MyStage myStage = new MyStage(Main.class.getClassLoader().getResource("view/main/main.fxml"));
+        ExtendStage myStage = new ExtendStage(Main.class.getClassLoader().getResource("view/main/main.fxml"));
         myStage.show();
     }
 }

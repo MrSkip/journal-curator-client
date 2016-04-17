@@ -1,5 +1,7 @@
 package com.kursova.kep.entity;
 
+import java.util.List;
+
 /**
  * by Mr Skip on 08.03.2016.
  */
@@ -13,6 +15,7 @@ public class Group extends BaseEntity{
     private String curatorName;
     private Integer countOfStudents;
     private Department department;
+    private List<Subject> subjectList;
 
     public Group() {
     }
@@ -24,7 +27,8 @@ public class Group extends BaseEntity{
             Integer course,
             String curatorName,
             Integer countOfStudents,
-            Department idDepartment
+            Department idDepartment,
+            List<Subject> subjectSet
     ) {
         this.name = name;
         this.codeOfSpeciality = codeOfSpeciality;
@@ -33,6 +37,7 @@ public class Group extends BaseEntity{
         this.curatorName = curatorName;
         this.countOfStudents = countOfStudents;
         this.department = idDepartment;
+        this.subjectList = subjectSet;
     }
 
     public Group setGroup(Group group){
@@ -87,11 +92,11 @@ public class Group extends BaseEntity{
         this.curatorName = curatorName;
     }
 
-    public int getCountOfStudents() {
+    public Integer getCountOfStudents() {
         return countOfStudents;
     }
 
-    public void setCountOfStudents(int countOfStudents) {
+    public void setCountOfStudents(Integer countOfStudents) {
         this.countOfStudents = countOfStudents;
     }
 
@@ -101,6 +106,14 @@ public class Group extends BaseEntity{
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public List<Subject> getSubjectList() {
+        return subjectList;
+    }
+
+    public void setSubjectList(List<Subject> subjectList) {
+        this.subjectList = subjectList;
     }
 
     @Override
@@ -114,8 +127,6 @@ public class Group extends BaseEntity{
                 ", curatorName='" + curatorName + '\'' +
                 ", countOfStudents=" + countOfStudents +
                 ", idDepartment=" + (getDepartment() != null ? getDepartment().getId() : "null") +
-//                ", studentSet=" + studentSet +
-//                ", subjectSet=" + subjectSet +
                 '}';
     }
 }
