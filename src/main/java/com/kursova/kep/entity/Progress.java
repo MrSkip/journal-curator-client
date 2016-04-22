@@ -1,6 +1,6 @@
 package com.kursova.kep.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * by Mr Skip on 08.03.2016.

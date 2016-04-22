@@ -1,6 +1,7 @@
 package com.kursova.kep.rest;
 
 import com.kursova.kep.entity.Department;
+import javafx.scene.control.TextArea;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -19,23 +20,28 @@ import java.util.logging.Logger;
  */
 
 public class Client {
+    private static TextArea textArea;
+
+    public static void setTextArea(TextArea textArea){
+        Client.textArea = textArea;
+    }
 //    private static final Logger log = LoggerFactory.getLogger(HttpResponse.class);
     private static Logger logger = Logger.getLogger("Client.class");
     private static final String BEGINNER_URI = "http://localhost:8080/";
 
     private static String uri;
 
-    public static <C extends Class> Get get(String uri, C c1) throws Exception{
+    public static <C extends Class> Get get(String uri, C c1) {
         Client.uri = BEGINNER_URI + uri;
         return new Get(c1);
     }
 
-    public static <T, C extends Class> T delete(String uri, C c) throws Exception{
+    public static <T, C extends Class> T delete(String uri, C c) {
         Client.uri = BEGINNER_URI + uri;
         return new Rend(RequestMethod.DELETE).execute(c);
     }
 
-    public static <C extends Class> Post post(String uri, C c) throws Exception{
+    public static <C extends Class> Post post(String uri, C c) {
         Client.uri = BEGINNER_URI + uri;
         return new Post(c);
     }
@@ -55,7 +61,7 @@ public class Client {
             return this;
         }
 
-        public <T> T build() throws Exception{
+        public <T> T build() {
             return (T) new Rend(RequestMethod.GET, variable).execute(c);
         }
     }
@@ -80,7 +86,7 @@ public class Client {
             return this;
         }
 
-        public <T> T build() throws Exception{
+        public <T> T build() {
             return (T) new Rend(RequestMethod.POST, variable, request).execute(c);
         }
     }
@@ -111,7 +117,7 @@ public class Client {
             this.variable = variable;
         }
 
-        public <T, C extends Class> T execute(C c) throws Exception{
+        public <T, C extends Class> T execute(C c) {
             try {
                 
                 UriComponentsBuilder builderUri =
@@ -140,14 +146,12 @@ public class Client {
                 System.out.println("Some exception");
                 e.printStackTrace();
                 if (e.getResponseHeaders().get("MySQL_Exception") != null)
-                    throw new Exception(e.getResponseHeaders().get("MySQL_Exception").get(0));
+                    textArea.setText(e.getResponseHeaders().get("MySQL_Exception").get(0));
                 return null;
             } catch (ResourceAccessException e){
                 System.out.println("Resource Access Exception: " + e.getCause().getMessage());
-//                log.info("Resource Access Exception: {}", e.getCause().getMessage());
                 return null;
             } catch (Exception e){
-//                log.info("Some exception: {}", e.getMessage());
                 System.out.println("Body is empty: \n" + e + "");
                 return null;
             }

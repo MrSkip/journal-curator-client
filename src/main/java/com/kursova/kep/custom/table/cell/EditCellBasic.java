@@ -1,9 +1,12 @@
 package com.kursova.kep.custom.table.cell;
 
+import com.kursova.kep.custom.VariablesForCell;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+
+import java.util.List;
 
 /**
  * Created by Mr. Skip.
@@ -12,9 +15,11 @@ import javafx.scene.input.KeyEvent;
 public class EditCellBasic<S, T> extends TableCell<S, T> {
     private final Class aClass;
     private TextField textField;
+    private List<VariablesForCell> variablesForCells;
 
-    public EditCellBasic(Class aClass) {
+    public EditCellBasic(Class aClass, List<VariablesForCell> variablesForCells) {
         this.aClass = aClass;
+        this.variablesForCells = variablesForCells;
     }
 
     @Override
@@ -81,7 +86,7 @@ public class EditCellBasic<S, T> extends TableCell<S, T> {
                     commitEdit((T) (Double) Double.parseDouble(s));
                 else if (aClass == Integer.class)
                     commitEdit((T) (Integer) Integer.parseInt(s));
-                else //(T) textField.getText(){
+                else
                 {
                     commitEdit((T) textField.getText());
                 }
@@ -89,37 +94,47 @@ public class EditCellBasic<S, T> extends TableCell<S, T> {
         });
         textField.addEventFilter(KeyEvent.KEY_TYPED, e -> {
             TextField txt_TextField = (TextField) e.getSource();
+
             if (txt_TextField.getText().length() >= 100) {
                 e.consume();
             }
-            if (aClass == String.class) {
-                if (e.getCharacter().matches("[A-Za-z]")
-                        || e.getCharacter().matches("[А-Яа-я]")
-                        || e.getCharacter().matches("[їЇіІєЄ@. ]")) {
-                } else {
-                    e.consume();
-                }
-            }
-            else if (aClass == long.class
-                    || aClass == int.class
-                    || aClass == Integer.class
-                    || aClass == Long.class){
-                if (e.getCharacter().matches("[0-9]")) {
-                } else {
-                    e.consume();
-                }
-            }
-            else if (aClass == double.class || aClass == Double.class){
-                if (e.getCharacter().matches("[0-9]") || e.getCharacter().matches("[.]")) {
-                } else {
-                    e.consume();
-                }
-            }
+
+            if (e.getCharacter().matches(getCellMatches(aClass))){}
+            else e.consume();
+
         });
 
     }
 
     private String getString() {
         return getItem() == null ? "" : getItem().toString();
+    }
+
+    private String getCellMatches(Class aClass){
+        String columnName = getTableColumn().getText();
+        String userMatches = null;
+
+        for (VariablesForCell variablesForCell : variablesForCells) {
+            if (variablesForCell.getCustomCellName().equals(columnName)){
+                userMatches = variablesForCell.getRegularExpress();
+                break;
+            }
+        }
+
+        if (userMatches == null){
+            if (aClass == String.class) {
+                userMatches = "[A-Za-zА-Яа-яїЇіІєЄ @.-]";
+            }
+            else if (aClass == long.class
+                    || aClass == int.class
+                    || aClass == Integer.class
+                    || aClass == Long.class){
+                userMatches = "[0-9]";
+            }
+            else if (aClass == double.class || aClass == Double.class){
+                userMatches = "[0-9.]";
+            }
+        }
+        return userMatches == null ? "" : userMatches;
     }
 }

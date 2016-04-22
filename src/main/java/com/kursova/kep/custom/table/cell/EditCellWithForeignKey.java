@@ -45,7 +45,7 @@ public class EditCellWithForeignKey<S extends BaseEntity, T> extends TableCell<S
 
     public void createStage(){
         stage = new ExtendStage(EditCellWithForeignKey.class.getClassLoader()
-                .getResource("view/main/cellfirst/view.fxml"));
+                .getResource("view/main/cell_first/view.fxml"));
 
         stage.initStyle(StageStyle.UTILITY);
 
@@ -65,14 +65,14 @@ public class EditCellWithForeignKey<S extends BaseEntity, T> extends TableCell<S
                     cancelEdit();
                 }
                 else {
-                    Long aLong = ((BaseEntity) editFirst.table.getSelectionModel().getSelectedItem()).getId();
-                    commitEdit((T) aLong);
+                    T t = (T) editFirst.table.getSelectionModel().getSelectedItem();
+                    commitEdit(t);
                     stage.close();
                 }
             }
         });
 
-        stage.onShownProperty().setValue(event -> editFirst.setId(getString()));
+        stage.onShownProperty().setValue(event -> editFirst.setId(Math.toIntExact(((BaseWithName) getItem()).getId())));
 
         editFirst.close.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
             if (event.getButton() == MouseButton.PRIMARY){
@@ -104,7 +104,7 @@ public class EditCellWithForeignKey<S extends BaseEntity, T> extends TableCell<S
     }
 
     private String getString() {
-        return getItem() == null ? null : getItem().toString();
+        return getItem() == null ? null : ((BaseWithName)getItem()).getName();
     }
 
 }

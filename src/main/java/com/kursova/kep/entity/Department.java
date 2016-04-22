@@ -4,10 +4,7 @@ package com.kursova.kep.entity;
  * by Mr Skip on 10.03.2016.
  */
 
-public class Department extends BaseEntity{
-
-    private Long id;
-    private String name;
+public class Department extends BaseWithName{
     private String pibOfHead;
 
     public Department() {
@@ -21,15 +18,6 @@ public class Department extends BaseEntity{
         this.id = id;
         this.name = name;
         this.pibOfHead = pibOfHead;
-    }
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

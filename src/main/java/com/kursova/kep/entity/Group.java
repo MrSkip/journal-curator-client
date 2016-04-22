@@ -6,16 +6,15 @@ import java.util.List;
  * by Mr Skip on 08.03.2016.
  */
 
-public class Group extends BaseEntity{
+public class Group extends BaseWithName{
 
-    private String name;
     private String codeOfSpeciality;
     private String nameOfSpeciality;
     private Integer course;
     private String curatorName;
     private Integer countOfStudents;
     private Department department;
-    private List<Subject> subjectList;
+    private List<Subject> subjectSet;
 
     public Group() {
     }
@@ -37,7 +36,7 @@ public class Group extends BaseEntity{
         this.curatorName = curatorName;
         this.countOfStudents = countOfStudents;
         this.department = idDepartment;
-        this.subjectList = subjectSet;
+        this.subjectSet = subjectSet;
     }
 
     public Group setGroup(Group group){
@@ -50,14 +49,6 @@ public class Group extends BaseEntity{
         countOfStudents = group.countOfStudents;
         department = group.department;
         return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getCodeOfSpeciality() {
@@ -108,12 +99,12 @@ public class Group extends BaseEntity{
         this.department = department;
     }
 
-    public List<Subject> getSubjectList() {
-        return subjectList;
+    public List<Subject> getSubjectSet() {
+        return subjectSet;
     }
 
-    public void setSubjectList(List<Subject> subjectList) {
-        this.subjectList = subjectList;
+    public void setSubjectSet(List<Subject> subjectSet) {
+        this.subjectSet = subjectSet;
     }
 
     @Override

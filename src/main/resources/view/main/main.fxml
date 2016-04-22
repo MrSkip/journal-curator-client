@@ -24,7 +24,7 @@
          <center>
             <HBox id="top-hBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button id="top-button" fx:id="butDepartment" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Department">
+                  <Button id="top-button" fx:id="butDepartment" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Відділення">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -32,23 +32,23 @@
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button id="top-button" fx:id="butGroup" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Group">
+                  <Button id="top-button" fx:id="butGroup" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Групи">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Button>
-                  <Button id="top-button" fx:id="butStudent" mnemonicParsing="false" prefWidth="120.0" text="Student">
+                  <Button id="top-button" fx:id="butStudent" mnemonicParsing="false" prefWidth="120.0" text="Студенти">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Button>
-                  <Button id="top-button" fx:id="butSudject" mnemonicParsing="false" prefWidth="120.0" text="Subject">
+                  <Button id="top-button" fx:id="butSubject" mnemonicParsing="false" prefWidth="120.0" text="Предмети">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Button>
-                  <Button id="top-button" fx:id="butVisiting" mnemonicParsing="false" prefWidth="120.0" text="Visiting">
+                  <Button id="top-button" fx:id="butVisiting" mnemonicParsing="false" prefWidth="120.0" text="Відвідування">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Button>
-                  <Button id="top-button" fx:id="butProgress" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Progress">
+                  <Button id="top-button" fx:id="butProgress" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Успішність">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin></Button>
@@ -73,7 +73,7 @@
                <children>
                   <VBox id="vBox-left" alignment="TOP_CENTER">
                      <children>
-                        <Label id="while-text" prefHeight="15.0" prefWidth="197.0" text="Current table">
+                        <Label id="while-text" prefHeight="15.0" prefWidth="197.0" text="Поточна таблиця">
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin>
@@ -81,7 +81,7 @@
                               <Font name="Serif Regular" size="13.0" />
                            </font>
                         </Label>
-                        <Label id="label-header" fx:id="labCurrentTable" alignment="CENTER" minHeight="35.0" minWidth="152.0" prefHeight="35.0" prefWidth="152.0" text="Department">
+                        <Label id="label-header" fx:id="labCurrentTable" alignment="CENTER" minHeight="35.0" minWidth="170.0" prefHeight="35.0" prefWidth="152.0" text="Відділення">
                            <font>
                               <Font name="Droid Serif" size="24.0" />
                            </font>
@@ -91,14 +91,41 @@
                         </Label>
                      </children>
                   </VBox>
-                  <TitledPane animated="false" text="Tasks">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </TitledPane>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <VBox prefHeight="329.0" prefWidth="212.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <TitledPane fx:id="titledPane" animated="false" text="Завдання">
+                                <content>
+                                  <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <ScrollPane prefHeight="183.0" prefWidth="212.0">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                                                   <children>
+                                                      <BorderPane prefHeight="179.0" prefWidth="200.0">
+                                                         <center>
+                                                            <VBox fx:id="vBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+                                                         </center>
+                                                      </BorderPane>
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </TitledPane>
+                              <Label text="Вікно помилок">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextArea fx:id="textArea" editable="false" prefHeight="159.0" prefWidth="212.0" />
+                           </children>
+                        </VBox>
+                     </top>
+                  </BorderPane>
                </children></VBox>
          </center>
       </BorderPane>
@@ -112,8 +139,28 @@
             <Pane prefHeight="392.0" prefWidth="15.0" BorderPane.alignment="CENTER" />
          </right>
          <center>
-            <TableView fx:id="table" prefHeight="430.0" prefWidth="512.0" BorderPane.alignment="CENTER"/>
+            <TableView fx:id="table" prefHeight="430.0" prefWidth="512.0" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </center>
+   <bottom>
+      <BorderPane prefHeight="35.0" prefWidth="821.0" BorderPane.alignment="CENTER">
+         <right>
+            <HBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="276.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button id="top-button" fx:id="buttonDelete" mnemonicParsing="false" prefWidth="120.0" text="Видалити">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button id="top-button" fx:id="buttonAdd" mnemonicParsing="false" prefWidth="120.0" text="Додати">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </right>
+      </BorderPane>
+   </bottom>
 </BorderPane>

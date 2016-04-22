@@ -8,6 +8,8 @@ public class BaseEntity {
     Long id;
 
     public Long getId() {
+        if (id == null)
+            return null;
         return id;
     }
 

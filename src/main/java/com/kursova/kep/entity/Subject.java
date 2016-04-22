@@ -4,9 +4,8 @@ package com.kursova.kep.entity;
  * by Mr Skip on 08.03.2016.
  */
 
-public class Subject extends BaseEntity{
+public class Subject extends BaseWithName{
 
-    private String name;
     private String teacher;
 
     public Subject() {
@@ -20,14 +19,6 @@ public class Subject extends BaseEntity{
     public Subject(Subject subject){
         name = subject.name;
         teacher = subject.teacher;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getTeacher() {

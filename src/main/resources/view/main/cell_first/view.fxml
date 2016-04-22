@@ -15,12 +15,12 @@
          <right>
             <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="222.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button id="top-button" fx:id="close" mnemonicParsing="false" text="Close">
+                  <Button id="top-button" fx:id="close" mnemonicParsing="false" text="Закрити">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button id="top-button" fx:id="add" mnemonicParsing="false" text="Add">
+                  <Button id="top-button" fx:id="add" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="Додати">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>

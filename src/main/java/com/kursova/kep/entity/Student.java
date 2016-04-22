@@ -6,11 +6,9 @@ import java.sql.Date;
  * by Mr Skip on 08.03.2016.
  */
 
-public class Student extends BaseEntity{
+public class Student extends BaseWithName{
 
-    private String name;
     private Group group;
-
     private String addressOfResidence;
     private String addressOfLiving;
     private String benefit;
@@ -55,14 +53,6 @@ public class Student extends BaseEntity{
         telephoneNumber = student.telephoneNumber;
         moreInformation = student.moreInformation;
         return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Group getGroup() {

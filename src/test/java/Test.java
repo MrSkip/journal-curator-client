@@ -1,8 +1,5 @@
-import com.kursova.kep.entity.Department;
+import com.kursova.kep.entity.Group;
 import com.kursova.kep.rest.Client;
-
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by Mr. Skip.
@@ -11,14 +8,12 @@ import java.util.List;
 public class Test {
 
     public static void main(String[] args) throws Exception {
-        List<Department> departments = Client
-                .get("department", Department[].class)
-                .setVariable(
-                        new HashMap<String, String>(){{
-                            put("name", "Mula");
-                        }})
+        Group departments = Client
+                .get("group/1", Group.class)
                 .build();
-        System.out.println(departments);
+        Class aClass = Group.class;
+
+//        System.out.println(Class.forName("com.kursova.kep.entity.Department").newInstance());
     }
 
 }
