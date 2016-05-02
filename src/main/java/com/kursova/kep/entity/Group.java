@@ -51,6 +51,16 @@ public class Group extends BaseWithName{
         return this;
     }
 
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getCodeOfSpeciality() {
         return codeOfSpeciality;
     }

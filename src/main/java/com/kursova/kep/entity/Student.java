@@ -8,6 +8,7 @@ import java.sql.Date;
 
 public class Student extends BaseWithName{
 
+    private String name;
     private Group group;
     private String addressOfResidence;
     private String addressOfLiving;
@@ -53,6 +54,16 @@ public class Student extends BaseWithName{
         telephoneNumber = student.telephoneNumber;
         moreInformation = student.moreInformation;
         return this;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Group getGroup() {

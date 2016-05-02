@@ -6,6 +6,7 @@ package com.kursova.kep.entity;
 
 public class Subject extends BaseWithName{
 
+    private String name;
     private String teacher;
 
     public Subject() {
@@ -19,6 +20,16 @@ public class Subject extends BaseWithName{
     public Subject(Subject subject){
         name = subject.name;
         teacher = subject.teacher;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getTeacher() {

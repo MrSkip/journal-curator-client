@@ -1,5 +1,6 @@
 package com.kursova.kep.control.start;
 
+import com.kursova.kep.control.base.BaseController;
 import javafx.concurrent.Task;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,7 +15,7 @@ import java.util.ResourceBundle;
  * by Mr Skip on 07.04.2016.
  */
 
-public class StartController implements Initializable {
+public class StartController extends BaseController implements Initializable {
     public ProgressBar progressBar;
     public Button close;
 

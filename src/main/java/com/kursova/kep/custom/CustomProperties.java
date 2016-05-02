@@ -3,6 +3,7 @@ package com.kursova.kep.custom;
 import com.kursova.kep.entity.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -50,6 +51,12 @@ public class CustomProperties {
                 return cellFormatForVisiting();
             case "Progress":
                 return cellFormatForProgress();
+            case "String": return null;
+            case "StudentExtend":
+                List<VariablesForCell> forCells = new ArrayList<>(cellFormatForStudent());
+                forCells.add(new VariablesForCell("groupName", "Назва групи"));
+                forCells.add(new VariablesForCell("departmentName", "Назва відділення"));
+                return  forCells;
         }
         return null;
     }

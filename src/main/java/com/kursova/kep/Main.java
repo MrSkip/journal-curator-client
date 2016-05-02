@@ -15,8 +15,8 @@ public class Main extends Application {
     }
 
     public void start(Stage primaryStage) throws Exception {
-//        new ExtendStage(Main.class.getClassLoader().getResource("view/start/start.fxml"))
-//                .showAndWait();
+        new ExtendStage(Main.class.getClassLoader().getResource("view/start/start.fxml"))
+                .showAndWait();
 
         ExtendStage myStage = new ExtendStage(Main.class.getClassLoader().getResource("view/main/main.fxml"));
         myStage.show();

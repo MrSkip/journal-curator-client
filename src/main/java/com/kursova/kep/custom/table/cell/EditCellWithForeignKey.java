@@ -7,6 +7,7 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.TableCell;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.StageStyle;
 
 /**
@@ -71,7 +72,7 @@ public class EditCellWithForeignKey<S extends BaseEntity, T> extends TableCell<S
                 }
             }
         });
-
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.onShownProperty().setValue(event -> editFirst.setId(Math.toIntExact(((BaseWithName) getItem()).getId())));
 
         editFirst.close.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {

@@ -2,12 +2,9 @@ package com.kursova.kep.custom.table.cell;
 
 import com.kursova.kep.control.main.edit.ControlForeignStageSecond;
 import com.kursova.kep.custom.stage.ExtendStage;
-import com.kursova.kep.entity.BaseEntity;
-import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.Menu;
 import javafx.scene.control.TableCell;
-import javafx.stage.Stage;
+import javafx.stage.Modality;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -30,6 +27,7 @@ public class EditCell<S, T> extends TableCell<S, T> {
     private void createStage() {
         stage = new ExtendStage(EditCellWithForeignKey.class.getClassLoader()
                 .getResource("view/main/cell_second/view.fxml"));
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.showingProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue)
                 cancelEdit();

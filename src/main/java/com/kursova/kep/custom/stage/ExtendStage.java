@@ -1,5 +1,6 @@
 package com.kursova.kep.custom.stage;
 
+import com.kursova.kep.control.base.BaseController;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
@@ -25,6 +26,7 @@ public class ExtendStage extends Stage{
             fxmlLoader = createFxmlLoader( location );
             Parent root = fxmlLoader.load(location.openStream());
             setScene( new Scene(root) );
+            ((BaseController) fxmlLoader.getController()).setStage(this);
         } catch (Exception e) {
             e.printStackTrace();
         }

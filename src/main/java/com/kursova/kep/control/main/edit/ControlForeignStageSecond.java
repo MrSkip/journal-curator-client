@@ -1,5 +1,6 @@
 package com.kursova.kep.control.main.edit;
 
+import com.kursova.kep.control.base.BaseController;
 import com.kursova.kep.custom.table.TableColumnsGenerator;
 import com.kursova.kep.entity.BaseEntity;
 import com.kursova.kep.rest.Client;
@@ -21,7 +22,7 @@ import java.util.stream.Collectors;
  * Created by Mr. Skip.
  */
 
-public class ControlForeignStageSecond<S extends BaseEntity> implements Initializable {
+public class ControlForeignStageSecond<S extends BaseEntity> extends BaseController implements Initializable {
     public Button buttonAdd;
     public Button buttonDelete;
     public Button buttonClose;
@@ -71,9 +72,7 @@ public class ControlForeignStageSecond<S extends BaseEntity> implements Initiali
             }
         });
 
-        buttonClose.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            ((Stage) buttonClose.getScene().getWindow()).close();
-        });
+        buttonClose.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> ((Stage) buttonClose.getScene().getWindow()).close());
 
     }
 

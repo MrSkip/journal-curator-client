@@ -1,5 +1,6 @@
 package com.kursova.kep.control.main.edit;
 
+import com.kursova.kep.control.base.BaseController;
 import com.kursova.kep.custom.table.TableColumnsGenerator;
 import com.kursova.kep.rest.Client;
 import javafx.fxml.Initializable;
@@ -15,7 +16,7 @@ import java.util.ResourceBundle;
  * Created by Mr. Skip.
  */
 
-public class ControlForeignStage implements Initializable {
+public class ControlForeignStage extends BaseController implements Initializable{
     public TableView table;
     public Button
             close,

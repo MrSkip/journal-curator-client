@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane id="main-border-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="821.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kursova.kep.control.main.MainController">
+<BorderPane id="main-border-pane" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="821.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kursova.kep.control.main.MainController">
    <top>
       <BorderPane prefHeight="67.0" prefWidth="633.0" BorderPane.alignment="CENTER">
          <left>
@@ -95,30 +95,17 @@
                      <top>
                         <VBox prefHeight="329.0" prefWidth="212.0" BorderPane.alignment="CENTER">
                            <children>
-                              <TitledPane fx:id="titledPane" animated="false" text="Завдання">
-                                <content>
-                                  <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <ScrollPane prefHeight="183.0" prefWidth="212.0">
-                                            <content>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
-                                                   <children>
-                                                      <BorderPane prefHeight="179.0" prefWidth="200.0">
-                                                         <center>
-                                                            <VBox fx:id="vBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
-                                                         </center>
-                                                      </BorderPane>
-                                                   </children>
-                                                </AnchorPane>
-                                            </content>
-                                          </ScrollPane>
-                                       </children>
-                                    </AnchorPane>
-                                </content>
-                              </TitledPane>
-                              <Label text="Вікно помилок">
+                              <Label fx:id="labelUserTask" text=" Індивідуальні Завдання">
                                  <VBox.margin>
-                                    <Insets bottom="5.0" top="10.0" />
+                                    <Insets bottom="15.0" top="15.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text=" Вікно помилок">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
                               <TextArea fx:id="textArea" editable="false" prefHeight="159.0" prefWidth="212.0" />

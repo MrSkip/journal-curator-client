@@ -10,7 +10,9 @@ import com.kursova.kep.custom.table.cell.EditCellBasic;
 import com.kursova.kep.entity.BaseEntity;
 import com.kursova.kep.entity.BaseWithName;
 import com.kursova.kep.rest.Client;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
@@ -21,6 +23,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Mr. Skip.
@@ -32,19 +35,34 @@ public class TableColumnsGenerator {
 
     public static TableColumnsGenerator setTableView(TableView table){
         TableColumnsGenerator.table = table;
+
+        if (!table.getColumns().isEmpty()) {
+            table.getColumns().clear();
+            if (!table.getItems().isEmpty())
+                table.getItems().clear();
+        }
+
         return new TableColumnsGenerator();
     }
 
-    public <S extends BaseEntity> void generateColumns(List<S> list, Class<S> sClass){
+    public <S> void generateColumns(List<S> list, Class<S> sClass){
         if (list != null) {
             ObservableList<S> observableList = FXCollections.observableArrayList(list);
             table.setItems(observableList);
         }
 
-        customColumns = CustomProperties.getCellFormat(sClass.getSimpleName());
-
         table.setTableMenuButtonVisible(true);
         table.setEditable(true);
+
+        if (sClass == String[].class) {
+            TableColumn<S, String> column
+                    = new TableColumn<>("Поле результатів");
+            column.setCellValueFactory(param -> new ReadOnlyStringWrapper((String)param.getValue()));
+            table.getColumns().add(column);
+            return;
+        }
+
+        customColumns = CustomProperties.getCellFormat(sClass.getSimpleName());
 
         Method[] methods = sClass.getMethods();
         for (Method method : methods) {
@@ -91,7 +109,6 @@ public class TableColumnsGenerator {
                     .setRequest(event.getTableView().getItems().get(event.getTablePosition().getRow()))
                     .build();
         });
-
         return column;
     }
 

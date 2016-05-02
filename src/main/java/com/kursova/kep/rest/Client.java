@@ -128,6 +128,7 @@ public class Client {
                     case DELETE: response = restTemplate.exchange(new RequestEntity<>(HttpMethod.DELETE, new URI(Client.uri)), c);
                         break;
                     case GET:
+                        System.out.println(builderUri.build().encode("UTF-8").toUri() + " - " + c);
                         response = restTemplate.getForEntity(builderUri.build().encode().toUri(), c);
                         break;
                     case POST:
