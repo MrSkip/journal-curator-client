@@ -109,6 +109,16 @@
                                  </VBox.margin>
                               </Label>
                               <TextArea fx:id="textArea" editable="false" prefHeight="159.0" prefWidth="212.0" />
+                              <Button fx:id="buttonPrint" mnemonicParsing="false" prefHeight="25.0" prefWidth="217.0" text="Друк">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="buttonExport" mnemonicParsing="false" prefHeight="25.0" prefWidth="264.0" text="Експорт у файл">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Button>
                            </children>
                         </VBox>
                      </top>

@@ -5,15 +5,19 @@ import com.kursova.kep.custom.CustomProperties;
 import com.kursova.kep.custom.stage.StageUtil;
 import com.kursova.kep.custom.table.TableColumnsGenerator;
 import com.kursova.kep.entity.*;
+import com.kursova.kep.message.Dialog;
 import com.kursova.kep.rest.Client;
 import com.kursova.kep.stage.UserTaskStage;
 import javafx.fxml.Initializable;
+import javafx.print.PrinterJob;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -36,7 +40,9 @@ public class MainController extends BaseController implements Initializable{
             butProgress,
             butSubject,
             buttonDelete,
-            buttonAdd;
+            buttonAdd,
+            buttonPrint,
+            buttonExport;
 
     public TextArea textArea;
 
@@ -102,6 +108,56 @@ public class MainController extends BaseController implements Initializable{
                 e.printStackTrace();
             }
         });
+
+        buttonPrint.setOnMouseClicked(event -> {
+            if (event.getButton() != MouseButton.PRIMARY)
+                return;
+            if (table.getItems() == null || table.getItems().isEmpty())
+                return;
+            boolean bl = Dialog.showConfirmDialog("", "Друк поточної таблиці \""
+                    + labCurrentTable.getText() + "\"", "Бажаєте роздрукувати?");
+            if (!bl) return;
+
+            PrinterJob printerJob = PrinterJob.createPrinterJob();
+            if (printerJob == null){
+                Dialog.showErrorDialog("Не встановлено жодного принтера");
+                return;
+            }
+            if (printerJob.showPrintDialog(getStage())
+                    && printerJob.printPage(table)) {
+                printerJob.endJob();
+            }
+        });
+
+        buttonExport.setOnMouseClicked(event -> {
+            if (event.getButton() != MouseButton.PRIMARY)
+                return;
+
+            if (table.getColumns() == null || table.getItems() == null
+                    || table.getColumns().isEmpty() || table.getItems().isEmpty())
+                Dialog.showErrorDialog("Немає даних, будь ласка, введіть дані");
+
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Збереження файлу");
+            fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("TEXT", "*.txt"));
+            File file = fileChooser.showSaveDialog(getStage());
+
+            if (file == null || !file.getPath().endsWith(".txt"))
+                return;
+
+            try {
+                Writer out = new BufferedWriter(new OutputStreamWriter(
+                        new FileOutputStream(file), "UTF8"));
+                for (Object o : table.getItems()) {
+                    out.write(o.toString() + "\n");
+                }
+                out.close();
+                Dialog.showInformationDialog("Експорт у файл вдало завершено");
+            } catch (IOException e) {
+                Dialog.showErrorDialog("Неправильно вказаний шлях до файлу, або ж його розширення");
+            }
+        });
+
 
         butDepartment.addEventFilter(MouseEvent.MOUSE_CLICKED, this::buttonObjectHandler);
         butGroup.addEventFilter(MouseEvent.MOUSE_CLICKED, this::buttonObjectHandler);
